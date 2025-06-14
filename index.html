@@ -4,45 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InfraFlight Drone Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #ffffff;
-      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f7fa;
+      color: #1f1f1f;
     }
     header {
-      position: relative;
-      background-color: #000;
+      background: url('drone_background.jpg') no-repeat center center;
+      background-size: cover;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 20px;
-    }
-    header iframe {
-      width: 100%;
-      max-width: 960px;
-      height: 540px;
-      border: none;
-      border-radius: 10px;
-      margin: 20px 0;
+      padding: 40px 20px;
     }
     header img {
-      max-width: 180px;
-      margin-bottom: 10px;
+      max-width: 140px;
+      margin-bottom: 20px;
     }
     header h1 {
-      font-size: 2.5rem;
-      color: #ff5500;
+      font-size: 2.8rem;
+      color: #ffffff;
+      background-color: rgba(0,0,0,0.4);
+      padding: 10px 20px;
+      border-radius: 8px;
     }
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 2;
     }
     .language-switch button {
-      background-color: #ff5500;
+      background-color: #003366;
       border: none;
       padding: 8px 12px;
       color: white;
@@ -55,55 +54,38 @@
       margin: 0 auto;
       padding: 40px 20px;
     }
-    section.services {
-      background: url('skyline.jpg') no-repeat center center;
-      background-size: cover;
-      padding: 40px 20px;
-      border-radius: 10px;
-      background-blend-mode: overlay;
-      background-color: rgba(0, 0, 0, 0.6);
+    section {
+      margin-bottom: 40px;
     }
     h2 {
-      font-size: 1.6rem;
-      color: #ff5500;
+      color: #003366;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
     }
     ul {
       padding-left: 20px;
       line-height: 1.8;
     }
     .contact {
-      background-color: #2a2a2a;
+      background-color: #e2ecf7;
       padding: 20px;
-      border-radius: 8px;
-      margin-top: 40px;
+      border-radius: 10px;
     }
     a {
-      color: #ff5500;
+      color: #003366;
       text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
     }
     .button {
       display: inline-block;
       margin-top: 15px;
       padding: 10px 20px;
-      background-color: #ff5500;
+      background-color: #003366;
       color: #fff;
       border-radius: 5px;
       text-decoration: none;
-      transition: background-color 0.3s;
     }
     .button:hover {
-      background-color: #e94e00;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      header iframe {
-        height: 220px;
-      }
+      background-color: #002244;
     }
     .en { display: none; }
   </style>
@@ -123,33 +105,32 @@
   <header>
     <img src="logo.png" alt="InfraFlight Logo" />
     <h1>InfraFlight Drone Solutions</h1>
-    <iframe src="https://www.youtube.com/embed/1LA0QzF6yzs?autoplay=0&mute=1&rel=0" allowfullscreen></iframe>
   </header>
 
   <main>
     <section>
-      <p class="de">Modernste Drohnentechnik für Ihre Mission: präzise Ortung, thermische Analyse und hochauflösende Befliegung – schnell, effizient und einsatzbereit.</p>
-      <p class="en">Cutting-edge drone technology for your mission: precision tracking, thermal analysis and high-resolution surveys – fast, efficient and reliable.</p>
+      <p class="de">Präzise Drohnendienstleistungen für Behörden, Industrie und Landwirtschaft – mit moderner Wärmebild- und Vermessungstechnik, schnell und einsatzbereit.</p>
+      <p class="en">Precision drone services for public agencies, industry, and agriculture – equipped with modern thermal imaging and mapping tech, fast and mission-ready.</p>
     </section>
 
-    <section class="services">
+    <section>
       <h2 class="de">Unsere Leistungen</h2>
       <h2 class="en">Our Services</h2>
       <ul class="de">
-        <li>Wärmebildgestützte Personensuche</li>
-        <li>Kitzrettung & Wildtiersuche bei Mähdurchgängen</li>
-        <li>Wärmequellenanalyse zur Brandfrüherkennung</li>
-        <li>Inspektion von Gebäuden, Dächern & Photovoltaik-Anlagen</li>
-        <li>3D-Vermessung & technische Befliegungen</li>
-        <li>Unterstützung für Feuerwehr, THW & Sicherheitsdienste</li>
+        <li>Personensuche mit Wärmebild</li>
+        <li>Kitzrettung & Wildtiersuche</li>
+        <li>Thermografie für Feuerquellenanalyse</li>
+        <li>Dach- & Gebäudeinspektion</li>
+        <li>3D-Kartierung & technische Befliegung</li>
+        <li>Unterstützung für Einsatzkräfte</li>
       </ul>
       <ul class="en">
-        <li>Thermal-assisted missing person search</li>
-        <li>Fawn rescue & wildlife detection during mowing</li>
-        <li>Heat source detection & fire prevention analysis</li>
-        <li>Building, roof & solar panel inspection</li>
-        <li>3D mapping & technical aerial surveys</li>
-        <li>Support for fire departments, civil protection & security services</li>
+        <li>Thermal-assisted search & rescue</li>
+        <li>Fawn & wildlife detection</li>
+        <li>Fire source detection via thermography</li>
+        <li>Roof & building inspection</li>
+        <li>3D mapping & survey flights</li>
+        <li>Support for emergency services</li>
       </ul>
     </section>
 
