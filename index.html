@@ -84,19 +84,31 @@
   </style>
 </head>
 <body>
+  <div style="position: absolute; top: 20px; right: 20px;">
+    <button onclick="switchLanguage('de')" style="padding:6px 10px;margin-right:6px;">DE</button>
+    <button onclick="switchLanguage('en')" style="padding:6px 10px;">EN</button>
+  </div>
+  <script>
+    function switchLanguage(lang) {
+      document.querySelectorAll('.de').forEach(e => e.style.display = lang === 'de' ? 'block' : 'none');
+      document.querySelectorAll('.en').forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+    }
+    window.onload = () => switchLanguage('de');
+  </script>
+
   <header>
     <h1>InfraFlight Drone Solutions</h1>
   </header>
 
   <main>
     <section>
-      <h2>Präzise Drohnentechnologie für anspruchsvolle Einsätze</h2>
-      <p>InfraFlight bietet moderne Drohnenlösungen mit Wärmebild-, Laserscan- und Vermessungstechnik für Behörden, Industrie und Landwirtschaft. Schnell, präzise und zuverlässig einsatzbereit.</p>
+      <h2 class="de">Präzise Drohnentechnologie für anspruchsvolle Einsätze</h2><h2 class="en">Precision drone technology for demanding missions</h2>
+      <p class="de">InfraFlight bietet moderne Drohnenlösungen mit Wärmebild-, Laserscan- und Vermessungstechnik für Behörden, Industrie und Landwirtschaft. Schnell, präzise und zuverlässig einsatzbereit.</p><p class="en">InfraFlight offers modern drone services with thermal imaging, LiDAR and mapping capabilities – for government, industry and agriculture. Fast, precise and ready to deploy.</p>
     </section>
 
     <section>
-      <h2>Unsere Leistungen</h2>
-      <ul>
+      <h2 class="de">Unsere Leistungen</h2><h2 class="en">Our Services</h2>
+      <ul class="de">
         <li>Wärmebildgestützte Personensuche</li>
         <li>Wildtiersuche & Kitzrettung</li>
         <li>Brandfrüherkennung und Wärmequellenanalyse</li>
@@ -104,15 +116,24 @@
         <li>3D-Vermessung & technische Befliegung</li>
         <li>Unterstützung für Einsatzkräfte und Sicherheitsdienste</li>
       </ul>
+<ul class="en">
+  <li>Thermal-assisted search and rescue</li>
+  <li>Fawn and wildlife detection</li>
+  <li>Fire source detection and thermal analysis</li>
+  <li>Roof & building inspections</li>
+  <li>3D mapping & technical aerial imaging</li>
+  <li>Support for emergency and security services</li>
+</ul>
+
     </section>
 
     <section class="contact">
-      <h2>Kontakt</h2>
-      <p><strong>Nils Netzer</strong><br />
+      <h2 class="de">Kontakt</h2><h2 class="en">Contact</h2>
+      <p><strong>Nils Netzer</strong><br /><span class="de">Inhaber</span><span class="en">Owner</span>, InfraFlight Drone Solutions<br />
          Inhaber, InfraFlight Drone Solutions</p>
       <p>Mobil: <a href="tel:+491752041994">0175 2041994</a><br />
          E-Mail: <a href="mailto:info@nge.solutions">info@nge.solutions</a></p>
-      <a class="button" href="mailto:info@nge.solutions">Jetzt Kontakt aufnehmen</a>
+      <a class="button" href="mailto:info@nge.solutions">Kontakt aufnehmen / Get in touch</a>
     </section>
 
     <footer>
