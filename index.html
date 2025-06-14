@@ -5,51 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InfraFlight Drone Solutions</title>
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #1c1c1c, #2c2c2c);
+      background-color: #121212;
       color: #ffffff;
+      scroll-behavior: smooth;
     }
     header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    header video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header .content {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 100px 20px 40px;
     }
     header img {
       max-width: 180px;
-      height: auto;
       margin-bottom: 20px;
     }
     header h1 {
+      font-size: 2.5rem;
       color: #ff5500;
-      font-size: 2.8rem;
-      margin: 0;
+    }
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+    .language-switch button {
+      background-color: #ff5500;
+      border: none;
+      padding: 8px 12px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
     }
     main {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 20px;
-      animation: fadeIn 1s ease-in;
+      padding: 40px 20px;
     }
-    section {
-      margin-bottom: 40px;
+    section.services {
+      background: url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60b?auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+      background-size: cover;
+      padding: 40px 20px;
+      border-radius: 10px;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 0, 0.6);
     }
     h2 {
       font-size: 1.6rem;
       color: #ff5500;
-      margin-bottom: 10px;
     }
     ul {
       padding-left: 20px;
       line-height: 1.8;
     }
     .contact {
-      background-color: #3a3a3a;
+      background-color: #2a2a2a;
       padding: 20px;
       border-radius: 8px;
-    }
-    .contact p {
-      margin: 8px 0;
+      margin-top: 40px;
     }
     a {
       color: #ff5500;
@@ -57,10 +96,6 @@
     }
     a:hover {
       text-decoration: underline;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     .button {
       display: inline-block;
@@ -75,35 +110,70 @@
     .button:hover {
       background-color: #e94e00;
     }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+    .en { display: none; }
   </style>
+  <script>
+    function switchLanguage(lang) {
+      document.querySelectorAll('.de').forEach(e => e.style.display = lang === 'de' ? 'block' : 'none');
+      document.querySelectorAll('.en').forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+    }
+  </script>
 </head>
 <body>
+  <div class="language-switch">
+    <button onclick="switchLanguage('de')">DE</button>
+    <button onclick="switchLanguage('en')">EN</button>
+  </div>
+
   <header>
-    <img src="logo.png" alt="InfraFlight Logo" />
-    <h1>InfraFlight Drone Solutions</h1>
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.pixabay.com/vimeo/396211876/drone-31792.mp4?width=1280&hash=3e0d5de822a9ac084a8a95b55f084162b231b5e4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="content">
+      <img src="logo.png" alt="InfraFlight Logo" />
+      <h1>InfraFlight Drone Solutions</h1>
+    </div>
   </header>
 
   <main>
     <section>
-      <p>Ihr Partner für präzise und einsatznahe Drohnendienstleistungen mit modernster Infrarot- und Vermessungstechnik. Zuverlässig. Effizient. Einsatzbereit.</p>
+      <p class="de">Modernste Drohnentechnik für Ihre Mission: präzise Ortung, thermische Analyse und hochauflösende Befliegung – schnell, effizient und einsatzbereit.</p>
+      <p class="en">Cutting-edge drone technology for your mission: precision tracking, thermal analysis and high-resolution surveys – fast, efficient and reliable.</p>
     </section>
 
-    <section>
-      <h2>Unsere Leistungen</h2>
-      <ul>
+    <section class="services">
+      <h2 class="de">Unsere Leistungen</h2>
+      <h2 class="en">Our Services</h2>
+      <ul class="de">
         <li>Wärmebildgestützte Personensuche</li>
         <li>Kitzrettung & Wildtiersuche bei Mähdurchgängen</li>
         <li>Wärmequellenanalyse zur Brandfrüherkennung</li>
         <li>Inspektion von Gebäuden, Dächern & Photovoltaik-Anlagen</li>
-        <li>3D-Vermessung & technische Befliegungen (z. B. für Baustellen)</li>
+        <li>3D-Vermessung & technische Befliegungen</li>
         <li>Unterstützung für Feuerwehr, THW & Sicherheitsdienste</li>
+      </ul>
+      <ul class="en">
+        <li>Thermal-assisted missing person search</li>
+        <li>Fawn rescue & wildlife detection during mowing</li>
+        <li>Heat source detection & fire prevention analysis</li>
+        <li>Building, roof & solar panel inspection</li>
+        <li>3D mapping & technical aerial surveys</li>
+        <li>Support for fire departments, civil protection & security services</li>
       </ul>
     </section>
 
     <section class="contact">
-      <h2>Kontakt</h2>
+      <h2 class="de">Kontakt</h2>
+      <h2 class="en">Contact</h2>
       <p><strong>Nils Netzer</strong></p>
-      <p>Inhaber, InfraFlight Drone Solutions</p>
+      <p class="de">Inhaber, InfraFlight Drone Solutions</p>
+      <p class="en">Owner, InfraFlight Drone Solutions</p>
       <p>Telefon: <a href="tel:+491752041994">0175 2041994</a></p>
       <p>E-Mail: <a href="mailto:info@nge.solutions">info@nge.solutions</a></p>
       <a class="button" href="mailto:info@nge.solutions">Jetzt Kontakt aufnehmen</a>
