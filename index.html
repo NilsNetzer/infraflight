@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InfraFlight Drone Solutions | Einsatzdrohnen, Wärmebild & Lagebilder</title>
+  <meta name="description" content="InfraFlight Drone Solutions unterstützt Einsatzkräfte, Landwirtschaft, Unternehmen und Sicherheitsverantwortliche mit professionellen Drohneneinsätzen, Wärmebild, Lagebildern, Inspektion und Vermessung.">
+  <meta name="theme-color" content="#ff7a00">
+
+  <style>
+    :root{
+      --bg:#061014;
+      --bg2:#0a1a20;
+      --card:rgba(255,255,255,.07);
+      --card2:rgba(255,255,255,.105);
+      --line:rgba(255,255,255,.15);
+      --text:#f7f7f4;
+      --muted:#b8c2c7;
+      --orange:#ff7a00;
+      --orange2:#ff9d36;
+      --silver:#d9ddde;
+      --dark:#030608;
+      --radius:24px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 2%,rgba(255,122,0,.18),transparent 28%),
+        radial-gradient(circle at 82% 4%,rgba(255,255,255,.08),transparent 26%),
+        linear-gradient(180deg,#061014 0%,#08171d 48%,#030608 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(var(--max),calc(100% - 34px));margin:auto}
+
+    .nav{
+      position:fixed;
+      inset:0 0 auto;
+      z-index:20;
+      background:rgba(3,6,8,.78);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .nav-inner{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:max-content;
+    }
+
+    .mark{
+      width:52px;
+      height:52px;
+      flex:0 0 52px;
+    }
+
+    .brand-title strong{
+      display:block;
+      font-size:26px;
+      line-height:1;
+      letter-spacing:-.045em;
+    }
+
+    .brand-title span{
+      display:block;
+      margin-top:4px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      color:var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#dfe5e6;
+      font-size:14px;
+    }
+
+    .nav-links a:hover{color:var(--orange)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 19px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--orange),#c85100);
+      border:1px solid rgba(255,122,0,.78);
+      box-shadow:0 16px 34px rgba(255,122,0,.22);
+      color:#fff;
+      font-weight:850;
+      white-space:nowrap;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.22);
+      box-shadow:none;
+    }
+
+    .hero{
+      padding:138px 0 78px;
+      min-height:860px;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(3,6,8,.94),rgba(3,6,8,.78) 50%,rgba(3,6,8,.36)),
+        radial-gradient(circle at 78% 26%,rgba(255,122,0,.16),transparent 26%);
+      pointer-events:none;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:auto 0 -1px;
+      height:190px;
+      background:linear-gradient(0deg,var(--bg),transparent);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:.98fr 1.02fr;
+      gap:42px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--orange2);
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      font-weight:850;
+      font-size:13px;
+      margin-bottom:24px;
+    }
+
+    .eyebrow:before{
+      content:"";
+      width:46px;
+      height:3px;
+      border-radius:999px;
+      background:var(--orange);
+    }
+
+    h1{
+      margin:0;
+      text-transform:uppercase;
+      font-size:clamp(46px,6vw,86px);
+      line-height:.94;
+      letter-spacing:-.066em;
+    }
+
+    h1 span{
+      color:var(--orange);
+      display:block;
+    }
+
+    .lead{
+      max-width:650px;
+      margin:28px 0 0;
+      color:#dce2e4;
+      font-size:clamp(18px,2vw,22px);
+      line-height:1.55;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
+
+    .hero-visual{
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.04);
+      box-shadow:0 34px 90px rgba(0,0,0,.46);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-visual img{
+      width:100%;
+      height:auto;
+    }
+
+    .hero-note{
+      position:absolute;
+      left:22px;
+      right:22px;
+      bottom:22px;
+      display:grid;
+      gap:8px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.64);
+      backdrop-filter:blur(10px);
+      border-radius:20px;
+    }
+
+    .hero-note strong{
+      color:var(--orange);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    .hero-note span{
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .section{padding:90px 0}
+
+    .section-title{
+      margin-bottom:38px;
+    }
+
+    .section-title h2{
+      margin:0;
+      text-transform:uppercase;
+      font-size:clamp(34px,4vw,56px);
+      line-height:1;
+      letter-spacing:-.05em;
+    }
+
+    .section-title h2 span{color:var(--orange)}
+
+    .section-title p{
+      max-width:800px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.62;
+    }
+
+    .ops-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .op-card{
+      min-height:270px;
+      background:linear-gradient(180deg,var(--card),rgba(255,255,255,.028));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .op-card:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:4px;
+      background:linear-gradient(90deg,var(--orange),transparent);
+    }
+
+    .icon{
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      color:var(--orange);
+      background:rgba(255,122,0,.09);
+      border:1px solid rgba(255,122,0,.38);
+      font-size:25px;
+      margin-bottom:18px;
+    }
+
+    .op-card h3{
+      margin:0 0 12px;
+      text-transform:uppercase;
+      font-size:21px;
+      line-height:1.15;
+    }
+
+    .op-card p{
+      color:var(--muted);
+      line-height:1.62;
+      margin:0;
+    }
+
+    .image-grid{
+      display:grid;
+      grid-template-columns:1.16fr .84fr;
+      gap:22px;
+    }
+
+    .visual{
+      min-height:480px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:var(--radius);
+      background:
+        linear-gradient(180deg,transparent,rgba(0,0,0,.52)),
+        url("einsatz-industrie.jpeg") center/cover no-repeat;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.32);
+    }
+
+    .visual.small{
+      min-height:229px;
+      background-image:
+        linear-gradient(180deg,transparent,rgba(0,0,0,.52)),
+        url("drohne-nacht.jpeg");
+    }
+
+    .visual.small.second{
+      background-image:
+        linear-gradient(180deg,transparent,rgba(0,0,0,.52)),
+        url("monitor-einsatz.jpeg");
+    }
+
+    .visual-label{
+      position:absolute;
+      left:22px;
+      right:22px;
+      bottom:20px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .stack{display:grid;gap:22px}
+
+    .proof{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:34px;
+    }
+
+    .proof-item{
+      padding:22px;
+      border-radius:18px;
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .proof-item strong{
+      display:block;
+      color:var(--orange);
+      font-size:27px;
+      margin-bottom:7px;
+    }
+
+    .proof-item span{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .tech{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:36px;
+      align-items:center;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:30px;
+      padding:34px;
+    }
+
+    .tech-img{
+      min-height:365px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(180deg,transparent,rgba(0,0,0,.42)),
+        url("drohne-flug.jpeg") center/cover no-repeat;
+    }
+
+    .tech-list{
+      display:grid;
+      gap:14px;
+      margin-top:22px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .tech-list div{
+      display:flex;
+      gap:12px;
+    }
+
+    .tech-list div:before{
+      content:"✓";
+      color:var(--orange);
+      font-weight:900;
+    }
+
+    .compliance{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:30px;
+      align-items:center;
+      padding:34px;
+      border-radius:30px;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .logo-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .logo-card{
+      min-height:132px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:#fff;
+      border-radius:20px;
+    }
+
+    .logo-card img{
+      max-height:86px;
+      width:auto;
+      object-fit:contain;
+    }
+
+    .brand-section{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .media-card{
+      overflow:hidden;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.16);
+      background:#000;
+      box-shadow:0 30px 80px rgba(0,0,0,.38);
+    }
+
+    .about-card{
+      padding:34px;
+      border-radius:30px;
+      background:linear-gradient(180deg,var(--card),rgba(255,255,255,.025));
+      border:1px solid var(--line);
+    }
+
+    .about-card h2{
+      margin:0 0 18px;
+      text-transform:uppercase;
+      font-size:clamp(34px,4vw,52px);
+      line-height:1;
+      letter-spacing:-.05em;
+    }
+
+    .about-card h2 span{color:var(--orange)}
+
+    .about-card p{
+      color:var(--muted);
+      line-height:1.72;
+      font-size:17px;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .portrait{
+      min-height:520px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.16);
+      background:
+        linear-gradient(180deg,transparent,rgba(0,0,0,.36)),
+        url("nils-netzer.jpeg") center/cover no-repeat;
+      box-shadow:0 30px 80px rgba(0,0,0,.38);
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:28px;
+      align-items:center;
+      padding:36px;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(135deg,rgba(255,122,0,.13),transparent 32%),
+        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+    }
+
+    .contact h2{
+      margin:0 0 14px;
+      text-transform:uppercase;
+      font-size:clamp(36px,4.6vw,64px);
+      line-height:1;
+      letter-spacing:-.06em;
+    }
+
+    .contact h2 span{color:var(--orange)}
+
+    .contact p{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:18px;
+    }
+
+    .contact-box{
+      display:grid;
+      gap:13px;
+      padding:24px;
+      border-radius:22px;
+      background:rgba(0,0,0,.24);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .contact-row{
+      font-weight:800;
+      color:#fff;
+    }
+
+    .footer{
+      padding:34px 0;
+      border-top:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer a{color:#fff;opacity:.86}
+
+    @media(max-width:980px){
+      .nav-links{display:none}
+      .hero-grid,.image-grid,.tech,.compliance,.brand-section,.about,.contact{grid-template-columns:1fr}
+      .ops-grid{grid-template-columns:repeat(2,1fr)}
+      .proof{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:620px){
+      .brand-title strong{font-size:21px}
+      .mark{width:44px;height:44px}
+      .ops-grid,.proof,.logo-grid{grid-template-columns:1fr}
+      .section{padding:68px 0}
+      .hero{padding-top:112px;min-height:auto}
+      .visual,.portrait{min-height:360px}
+      .contact,.compliance{padding:24px}
+      .hero-note{position:static;margin:14px;background:rgba(0,0,0,.72)}
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="InfraFlight Startseite">
+        <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M18 18c14-12 24 2 24 2l8 8 8-8s10-14 24-2-2 24-2 24l-8 8 8 8s16 12 2 24-24-2-24-2l-8-8-8 8s-10 14-24 2 2-24 2-24l8-8-8-8S4 30 18 18Z" fill="none" stroke="#ff7a00" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="14" fill="none" stroke="#f7f7f4" stroke-width="7"/>
+          <path d="M35 35l-8-8M65 35l8-8M35 65l-8 8M65 65l8 8" stroke="#f7f7f4" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-title">
+          <strong>InfraFlight</strong>
+          <span>Drone Solutions</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#einsatz">Einsatz</a>
+        <a href="#technik">Technik</a>
+        <a href="#nachweise">Nachweise</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a class="btn" href="tel:+491752041994">0175 2041994</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Drohnenunterstützung für Einsatzlagen</div>
+          <h1>Schnelle <span>Lagebilder</span> aus der Luft.</h1>
+          <p class="lead">
+            InfraFlight unterstützt bei Suche, Rettung, Wärmebildaufklärung, Inspektion und Dokumentation. Für Situationen, in denen Überblick, Geschwindigkeit und belastbare Informationen entscheidend sind.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#kontakt">Einsatz anfragen</a>
+            <a class="btn secondary" href="#einsatz">Einsatzbereiche ansehen</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="hero-vehicle-wrap.png" alt="InfraFlight Einsatzfahrzeug Folierungsdesign">
+          <div class="hero-note">
+            <strong>Einsatzorientierter Auftritt</strong>
+            <span>Fahrzeug, Webseite und Printmaterial folgen einem einheitlichen, technischen Design.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="einsatz">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Einsatzbereiche <span>im Überblick</span></h2>
+          <p>InfraFlight ist auf praktische Drohnenunterstützung ausgelegt: klare Lagebilder, schnelle Orientierung und verwertbare Daten für Einsatzleitung, Auftraggeber und Fachverantwortliche.</p>
+        </div>
+
+        <div class="ops-grid">
+          <article class="op-card">
+            <div class="icon">✚</div>
+            <h3>Personensuche & Rettung</h3>
+            <p>Wärmebildgestützte Suche, Absuchen großer Flächen und schnelle Unterstützung bei unübersichtlichen Lagen.</p>
+          </article>
+
+          <article class="op-card">
+            <div class="icon">♨</div>
+            <h3>Wärmebild & Brandlage</h3>
+            <p>Erkennung von Wärmequellen, Glutnestern, auffälligen Temperaturbereichen und nächtlichen Suchlagen.</p>
+          </article>
+
+          <article class="op-card">
+            <div class="icon">⌖</div>
+            <h3>Lagebild für Einsatzkräfte</h3>
+            <p>Übersicht aus der Luft für Abschnitte, Gelände, Zufahrten, Gefahrenbereiche und Entscheidungsunterstützung.</p>
+          </article>
+
+          <article class="op-card">
+            <div class="icon">⌂</div>
+            <h3>Gebäude & Dachinspektion</h3>
+            <p>Sichtprüfung schwer erreichbarer Bereiche ohne Gerüst, Leiter oder unnötige Gefährdung.</p>
+          </article>
+
+          <article class="op-card">
+            <div class="icon">◇</div>
+            <h3>Vermessung & Dokumentation</h3>
+            <p>Bilddaten, Übersichtsdokumentation und strukturierte Erfassung von Flächen, Objekten und Einsatzstellen.</p>
+          </article>
+
+          <article class="op-card">
+            <div class="icon">♞</div>
+            <h3>Wildtiersuche & Kitzrettung</h3>
+            <p>Effiziente Unterstützung für Landwirtschaft, Jagd und Tierschutz mit moderner Wärmebildtechnik.</p>
+          </article>
+        </div>
+
+        <div class="proof">
+          <div class="proof-item"><strong>Schnell</strong><span>Kurze Reaktionswege und klare Einsatzvorbereitung.</span></div>
+          <div class="proof-item"><strong>Präzise</strong><span>Hochauflösende Bilddaten und Wärmebildunterstützung.</span></div>
+          <div class="proof-item"><strong>Ruhig</strong><span>Strukturierte Arbeit auch in dynamischen Lagen.</span></div>
+          <div class="proof-item"><strong>Verwertbar</strong><span>Lagebilder, die Entscheidungen unterstützen.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap image-grid">
+        <div class="visual">
+          <div class="visual-label"><span>Industrie & Sonderlagen</span><span>Aufklärung</span></div>
+        </div>
+        <div class="stack">
+          <div class="visual small">
+            <div class="visual-label"><span>Nachteinsatz</span><span>Wärmebild</span></div>
+          </div>
+          <div class="visual small second">
+            <div class="visual-label"><span>Live-Bild</span><span>Kontrolle</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="technik">
+      <div class="wrap tech">
+        <div>
+          <div class="section-title" style="margin-bottom:0">
+            <h2>Technik für <span>belastbare Lagebilder</span></h2>
+            <p>Professionelle Drohnentechnik für Suche, Inspektion, Dokumentation und technische Auswertung.</p>
+          </div>
+          <div class="tech-list">
+            <div>Wärmebildkamera für Suche, Analyse und technische Kontrolle</div>
+            <div>Hochauflösende Kamera für Lagebild und Dokumentation</div>
+            <div>Live-Bild zur Orientierung und Einsatzunterstützung</div>
+            <div>Vorbereitung, Durchführung und Nachbereitung aus einer Hand</div>
+          </div>
+        </div>
+        <div class="tech-img"></div>
+      </div>
+    </section>
+
+    <section class="section" id="nachweise">
+      <div class="wrap compliance">
+        <div class="about-card">
+          <h2>Nachweise & <span>regulärer Betrieb</span></h2>
+          <p>InfraFlight orientiert sich an den geltenden europäischen Vorgaben für den Drohnenbetrieb. Die notwendigen Kompetenznachweise, Registrierungen und einsatzbezogenen Prüfungen werden vor einem Einsatz berücksichtigt.</p>
+          <p>Wichtig: Die Darstellung beschreibt die regulatorische Einordnung und vorhandene Nachweise. Sie ist bewusst nicht als pauschale „EASA-Zertifizierung“ formuliert, weil EASA und LBA unterschiedliche Rollen im europäischen Drohnenbetrieb haben.</p>
+        </div>
+        <div class="logo-grid">
+          <div class="logo-card"><img src="easa-logo.jpg" alt="EASA Logo"></div>
+          <div class="logo-card"><img src="lba-logo.png" alt="Luftfahrt-Bundesamt Logo"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap brand-section">
+        <div class="media-card">
+          <img src="flyer-final.jpeg" alt="InfraFlight Flyer">
+        </div>
+        <div class="about-card">
+          <h2>Einheitlicher <span>Einsatzauftritt</span></h2>
+          <p>Flyer, Fahrzeugdesign und Webseite sind auf einen klaren Look abgestimmt: dunkel, technisch, einsatzbezogen und mit orangefarbenen Akzenten.</p>
+          <p>So wirkt InfraFlight nicht wie ein Hobbyprojekt, sondern wie ein professioneller Ansprechpartner für schnelle Drohnenunterstützung.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ueber">
+      <div class="wrap about">
+        <div class="portrait"></div>
+        <div class="about-card">
+          <h2>Nils Netzer. <span>InfraFlight Drone Solutions.</span></h2>
+          <p>InfraFlight verbindet moderne Drohnentechnologie mit operativer Erfahrung, ruhiger Lagebeurteilung und professioneller Vorbereitung.</p>
+          <p>Der Fokus liegt auf verlässlicher Unterstützung für Einsatzkräfte, Unternehmen, Sicherheitsverantwortliche, Landwirtschaft und technische Auftraggeber. Nicht als Spielerei aus der Luft, sondern als nutzbares Werkzeug für Entscheidungen, Dokumentation und schnelle Orientierung.</p>
+          <div class="hero-actions">
+            <a class="btn" href="mailto:info@infraflight-drone-solutions.de">E-Mail schreiben</a>
+            <a class="btn secondary" href="tel:+491752041994">Direkt anrufen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="wrap contact">
+        <div>
+          <h2>Einsatz oder Anfrage <span>besprechen?</span></h2>
+          <p>Beschreiben Sie kurz die Lage oder das Vorhaben. InfraFlight prüft Einsatzmöglichkeit, Verfügbarkeit, technische Anforderungen und den sinnvollen Ablauf.</p>
+          <div class="hero-actions">
+            <a class="btn" href="tel:+491752041994">Jetzt anrufen</a>
+            <a class="btn secondary" href="mailto:info@infraflight-drone-solutions.de?subject=Einsatzanfrage%20InfraFlight">Per E-Mail anfragen</a>
+          </div>
+        </div>
+        <div class="contact-box">
+          <div class="contact-row">Telefon: 0175 2041994</div>
+          <div class="contact-row">E-Mail: info@infraflight-drone-solutions.de</div>
+          <div class="contact-row">Web: www.infraflight-drone-solutions.de</div>
+          <div class="contact-row">Region: Rheinland-Pfalz, NRW, Hessen und nach Absprache</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>© 2026 InfraFlight Drone Solutions · Nils Netzer</div>
+      <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    </div>
+  </footer>
+</body>
+</html>
